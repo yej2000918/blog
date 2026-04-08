@@ -1,0 +1,59 @@
+baseURL = "https://jiming-tse.pages.dev/"
+title = "Jiming Tse"
+languageCode = "zh-cn"
+DefaultContentLanguage = "zh-cn"
+enableInlineShortcodes = true
+theme = "hugo-paper"
+
+[pagination]
+  pagerSize = 10
+
+[params]
+  color = 'linen'
+  # 不显示社交链接，留空即可
+  twitter   = ''
+  github    = ''
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true          # 允许在 Markdown 中写 HTML
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel   = 3
+    ordered    = false
+
+[taxonomies]
+  tag = "tags"               # 只保留 tags，不用 categories/series
+
+[menu]
+
+  [[menu.main]]
+    identifier = "stock"
+    name       = "个股研究"
+    url        = "/stock/"
+    weight     = 1
+
+  [[menu.main]]
+    identifier = "thoughts"
+    name       = "投资随想"
+    url        = "/thoughts/"
+    weight     = 2
+
+  [[menu.main]]
+    identifier = "industry"
+    name       = "行业分析"
+    url        = "/industry/"
+    weight     = 3
+
+  [[menu.main]]
+    identifier = "macro"
+    name       = "宏观观察"
+    url        = "/macro/"
+    weight     = 4
+
+  [[menu.main]]
+    identifier = "about"
+    name       = "关于"
+    url        = "/about/"
+    weight     = 5
