@@ -3,7 +3,7 @@ title = "Jiming Tse"
 languageCode = "zh-cn"
 DefaultContentLanguage = "zh-cn"
 enableInlineShortcodes = true
-theme = "hugo-paper"
+theme = "paper"
 
 [pagination]
   pagerSize = 10
