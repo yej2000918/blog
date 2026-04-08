@@ -1,0 +1,163 @@
+{{- define "main" -}}
+<style>
+  .home-wrap a { color: inherit; text-decoration: none; }
+  .home-wrap a:hover { text-decoration: none; }
+  .home-wrap p { margin: 0; }
+  .home-wrap {
+    max-width: 660px;
+    margin: 0 auto;
+  }
+  .home-subtitle {
+    text-align: center;
+    color: #999;
+    font-size: 0.9rem;
+    margin: 0.5rem 0 1.8rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+  .tab-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 2.5rem;
+  }
+  .tab-btn {
+    padding: 5px 18px;
+    border-radius: 20px;
+    border: 1.5px solid #d8d4cc;
+    background: transparent;
+    color: #555;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { border-color: #aaa; color: #222; }
+  .tab-btn.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+  .date-group { margin-bottom: 2rem; }
+  .date-header {
+    font-size: 0.78rem;
+    color: #aaa;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e8e5de;
+    margin-bottom: 0;
+    font-weight: 400;
+  }
+  .article-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0ede6;
+  }
+  .article-item:last-child { border-bottom: none; }
+  .article-num {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #e05c3b;
+    min-width: 26px;
+    padding-top: 2px;
+    font-variant-numeric: tabular-nums;
+  }
+  .article-body { flex: 1; min-width: 0; }
+  .article-title {
+    font-size: 1rem;
+    color: #1a1a1a !important;
+    font-weight: 500;
+    line-height: 1.4;
+    display: block;
+    text-decoration: none !important;
+  }
+  .article-title:hover { color: #444 !important; }
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 7px;
+  }
+  .tag-badge {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: #ede9e0;
+    color: #777;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+</style>
+
+{{- $sectionMap := dict "stock" "个股研究" "thoughts" "投资随想" "industry" "行业分析" "macro" "宏观观察" -}}
+{{- $pages := where .Site.RegularPages "Draft" "ne" true | sort "Date" "desc" -}}
+{{- $groups := $pages.GroupByDate "2006年1月2日" -}}
+
+<div class="home-wrap">
+
+  <p class="home-subtitle">独立投资研究与思考</p>
+
+  <div class="tab-nav">
+    <button class="tab-btn active" data-filter="all">全部</button>
+    <button class="tab-btn" data-filter="stock">个股研究</button>
+    <button class="tab-btn" data-filter="thoughts">投资随想</button>
+    <button class="tab-btn" data-filter="industry">行业分析</button>
+    <button class="tab-btn" data-filter="macro">宏观观察</button>
+  </div>
+
+  {{- range $groups -}}
+  <div class="date-group">
+    <div class="date-header">{{ .Key }}</div>
+    {{- range $i, $page := .Pages -}}
+    <div class="article-item" data-section="{{ $page.Section }}">
+      <span class="article-num">{{ printf "%02d" (add $i 1) }}</span>
+      <div class="article-body">
+        <a class="article-title" href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+        <div class="article-tags">
+          {{- with index $sectionMap $page.Section -}}
+          <span class="tag-badge">{{ . }}</span>
+          {{- end -}}
+          {{- range $page.Params.tags -}}
+          <span class="tag-badge">{{ . }}</span>
+          {{- end -}}
+        </div>
+      </div>
+    </div>
+    {{- end -}}
+  </div>
+  {{- end -}}
+
+  {{- if not $pages -}}
+  <p style="color:#aaa; text-align:center; padding: 3rem 0;">暂无文章</p>
+  {{- end -}}
+
+</div>
+
+<script>
+(function () {
+  var tabs = document.querySelectorAll('.tab-btn');
+  var groups = document.querySelectorAll('.date-group');
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      var filter = tab.getAttribute('data-filter');
+
+      document.querySelectorAll('.article-item').forEach(function (item) {
+        item.style.display =
+          (filter === 'all' || item.getAttribute('data-section') === filter)
+          ? 'flex' : 'none';
+      });
+
+      groups.forEach(function (group) {
+        var hasVisible = false;
+        group.querySelectorAll('.article-item').forEach(function (item) {
+          if (item.style.display !== 'none') { hasVisible = true; }
+        });
+        group.style.display = hasVisible ? '' : 'none';
+      });
+    });
+  });
+}());
+</script>
+{{- end -}}
