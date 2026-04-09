@@ -1,0 +1,135 @@
+/* ============================
+   全局字体：MiSans 系列
+   Light=300 Normal=400 Medium=500 Semibold=600
+   ============================ */
+body, button {
+  font-family: 'MiSans', 'MiSans Normal', system-ui, sans-serif !important;
+}
+.title-bold {
+  font-family: 'MiSans', sans-serif !important;
+  font-weight: 400 !important; /* Normal */
+}
+.title-thin {
+  font-family: 'MiSans', sans-serif !important;
+  font-weight: 300 !important; /* Light */
+}
+
+/* ============================
+   副标题字号
+   "独立投资研究与思考" 的字体大小
+   ============================ */
+.home-subtitle {
+  font-size: 1.2rem !important; /* 数值越大字越大，默认 0.9rem */
+}
+
+/* ============================
+   Tab 按钮样式修复
+   Tailwind 会重置 button 的 border 和 padding，这里恢复
+   ============================ */
+.tab-btn {
+  padding: 4px 14px !important;       /* 按钮内边距，上下 4px，左右 14px */
+  border-radius: 20px !important;     /* 圆角，数值越大越圆 */
+  border: 1.5px solid #d8d4cc !important; /* 边框颜色 */
+  background: transparent !important; /* 默认透明背景 */
+  color: #555 !important;             /* 默认文字颜色 */
+  font-size: 0.8rem !important;      /* 按钮字号 */
+  cursor: pointer !important;
+  white-space: nowrap !important;
+}
+.tab-btn:hover {
+  border-color: #aaa !important;      /* 悬停时边框颜色变深 */
+  color: #222 !important;             /* 悬停时文字颜色变深 */
+}
+.tab-btn.active {
+  background: #1a1a1a !important;     /* 选中时背景变黑 */
+  color: #fff !important;             /* 选中时文字变白 */
+  border-color: #1a1a1a !important;
+}
+
+/* ============================
+   Tab 下方间距
+   Tab 导航栏和文章列表之间的距离
+   ============================ */
+.tab-nav {
+  margin-bottom: 2rem !important; /* 数值越大间距越大 */
+}
+
+/* ============================
+   首页文章列表间距
+   每篇文章上下的内边距
+   ============================ */
+.article-item {
+  padding: 20px 0 !important; /* 上下各 20px，数值越大行间距越大 */
+}
+
+/* ============================
+   日期标题分割线
+   日期（如"2026年4月8日"）下方的横线
+   ============================ */
+.date-header {
+  border-bottom: 1px solid #e8e5de !important; /* 横线颜色 */
+  padding-bottom: 10px !important;              /* 日期文字到横线的距离 */
+  margin-bottom: 0 !important;
+}
+
+/* ============================
+   文章正文字号和字重
+   ============================ */
+.prose p, .prose li {
+  font-size: 1rem !important;    /* 正文字号，默认 1rem */
+  font-weight: 300 !important;   /* 正文字重，300=细 400=正常 */
+  line-height: 1.8 !important;   /* 行高，数值越大行间距越大 */
+}
+.prose strong, .prose b {
+  font-weight: 500 !important;   /* 正文粗体字重，默认 700，调小减少粗度 */
+}
+
+/* ============================
+   文章正文内标题（h1~h3）
+   ============================ */
+.prose h1 {
+  font-size: 1.6rem !important;  /* 一级标题字号 */
+  font-weight: 500 !important;   /* 一级标题字重 */
+}
+.prose h2 {
+  font-size: 1.3rem !important;  /* 二级标题字号 */
+  font-weight: 500 !important;   /* 二级标题字重 */
+}
+.prose h3 {
+  font-size: 1.1rem !important;  /* 三级标题字号 */
+  font-weight: 500 !important;   /* 三级标题字重 */
+}
+
+/* ============================
+   文章标题字号
+   ============================ */
+.article-title {
+  font-size: 1.2rem !important; /* 默认 1rem，数值越大越大 */
+}
+
+/* ============================
+   文章标题字重：冒号前粗体，冒号后细体
+   ============================ */
+.title-bold {
+  font-weight: 550 !important; /* 粗体部分，600=半粗，700=全粗 */
+}
+.title-thin {
+  font-weight: 350 !important; /* 细体部分，300=细，400=正常 */
+}
+
+/* ============================
+   标签与标题间距
+   文章标题和下方标签之间的距离
+   ============================ */
+.article-tags {
+  margin-top: 6px !important; /* 数值越大间距越大 */
+}
+
+/* ============================
+   标签样式
+   文章下方的小标签（如"宏观""石油"）
+   ============================ */
+.tag-badge {
+  font-size: 0.75rem !important;   /* 标签字号 */
+  padding: 2px 6px !important;  /* 标签内边距，上下 2.5px，左右 8px */
+}

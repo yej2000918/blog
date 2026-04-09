@@ -148,7 +148,14 @@
     <div class="article-item section-{{ $page.Section }}" data-section="{{ $page.Section }}">
       <span class="article-num">{{ printf "%02d" (add $i 1) }}</span>
       <div class="article-body">
-        <a class="article-title" href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+        <a class="article-title" href="{{ $page.RelPermalink }}">
+          {{- $title := $page.Title -}}
+          {{- if in $title "：" -}}
+            <span class="title-bold">{{ index (split $title "：") 0 }}：</span><span class="title-thin">{{ index (split $title "：") 1 }}</span>
+          {{- else -}}
+            {{ $title }}
+          {{- end -}}
+        </a>
         {{- with $page.Params.tags -}}
         <div class="article-tags">
           {{- range . -}}
