@@ -4,51 +4,129 @@
   .home-wrap a:hover { text-decoration: none; }
   .home-wrap p { margin: 0; }
   .home-wrap { max-width: 660px; margin: 0 auto; }
+
   .home-subtitle {
-    text-align: center; color: #999; font-size: 0.9rem;
-    margin: 0.5rem 0 1.8rem; font-weight: 400; letter-spacing: 0.02em;
+    text-align: center;
+    color: #999;
+    font-size: 0.9rem;
+    margin: 0.5rem 0 1.8rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
   }
+
   .tab-nav {
-    display: flex; justify-content: center; flex-wrap: wrap;
-    gap: 8px; margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 2.5rem;
   }
   .tab-btn {
-    padding: 5px 18px; border-radius: 20px;
-    border: 1.5px solid #d8d4cc; background: transparent;
-    color: #555; font-size: 0.85rem; cursor: pointer;
+    padding: 5px 18px;
+    border-radius: 20px;
+    border: 1.5px solid #d8d4cc;
+    background: transparent;
+    color: #555;
+    font-size: 0.85rem;
+    cursor: pointer;
     transition: background 0.15s, color 0.15s, border-color 0.15s;
-    font-family: inherit; white-space: nowrap;
+    font-family: inherit;
+    white-space: nowrap;
   }
   .tab-btn:hover { border-color: #aaa; color: #222; }
   .tab-btn.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+
+  /* Date groups — divider between groups */
   .date-group { margin-bottom: 2rem; }
-  .date-header {
-    font-size: 0.78rem; color: #aaa; padding-bottom: 10px;
-    border-bottom: 1px solid #e8e5de; margin-bottom: 0; font-weight: 400;
+  .date-group + .date-group {
+    border-top: 1.5px solid #e0dbd0;
+    padding-top: 2rem;
   }
+  .date-header {
+    font-size: 0.78rem;
+    color: #aaa;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e8e5de;
+    margin-bottom: 0;
+    font-weight: 400;
+  }
+
+  /* Article rows — more breathing room */
   .article-item {
-    display: flex; align-items: flex-start; gap: 16px;
-    padding: 15px 0; border-bottom: 1px solid #f0ede6;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 22px 0;
+    border-bottom: 1px solid #f0ede6;
   }
   .article-item:last-child { border-bottom: none; }
   .article-num {
-    font-size: 0.88rem; font-weight: 700; color: #e05c3b;
-    min-width: 26px; padding-top: 2px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #e05c3b;
+    min-width: 26px;
+    padding-top: 2px;
+    font-variant-numeric: tabular-nums;
   }
   .article-body { flex: 1; min-width: 0; }
   .article-title {
-    font-size: 1rem; color: #1a1a1a !important; font-weight: 500;
-    line-height: 1.4; display: block; text-decoration: none !important;
+    font-size: 1rem;
+    color: #1a1a1a !important;
+    font-weight: 500;
+    line-height: 1.4;
+    display: block;
+    text-decoration: none !important;
   }
-  .article-title:hover { color: #444 !important; }
-  .article-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+  .article-title:hover { color: #555 !important; }
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 8px;
+  }
   .tag-badge {
-    font-size: 0.7rem; padding: 2px 8px; border-radius: 4px;
-    background: #ede9e0; color: #777; font-weight: 400; white-space: nowrap;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: #ede9e0;
+    color: #777;
+    font-weight: 400;
+    white-space: nowrap;
   }
+
+  /* Section tag colors — light mode */
+  .section-stock    .tag-badge { background: #fde8e8; color: #b91c1c; }
+  .section-thoughts .tag-badge { background: #dbeafe; color: #1d4ed8; }
+  .section-industry .tag-badge { background: #d1fae5; color: #065f46; }
+  .section-macro    .tag-badge { background: #fef3c7; color: #92400e; }
+
+  /* Dark mode — system preference */
+  @media (prefers-color-scheme: dark) {
+    .article-title { color: #e8e3d8 !important; }
+    .article-title:hover { color: #bbb !important; }
+    .date-group + .date-group { border-top-color: #333; }
+    .date-header { border-bottom-color: #2e2e2e; color: #555; }
+    .article-item { border-bottom-color: #252525; }
+    .tag-badge { background: #2a2620; color: #888; }
+    .section-stock    .tag-badge { background: #3d1515; color: #fca5a5; }
+    .section-thoughts .tag-badge { background: #162040; color: #93c5fd; }
+    .section-industry .tag-badge { background: #0f2d1e; color: #6ee7b7; }
+    .section-macro    .tag-badge { background: #2d1e08; color: #fcd34d; }
+  }
+
+  /* Dark mode — hugo-paper class toggle */
+  .dark .article-title { color: #e8e3d8 !important; }
+  .dark .article-title:hover { color: #bbb !important; }
+  .dark .date-group + .date-group { border-top-color: #333; }
+  .dark .date-header { border-bottom-color: #2e2e2e; color: #555; }
+  .dark .article-item { border-bottom-color: #252525; }
+  .dark .tag-badge { background: #2a2620; color: #888; }
+  .dark .section-stock    .tag-badge { background: #3d1515; color: #fca5a5; }
+  .dark .section-thoughts .tag-badge { background: #162040; color: #93c5fd; }
+  .dark .section-industry .tag-badge { background: #0f2d1e; color: #6ee7b7; }
+  .dark .section-macro    .tag-badge { background: #2d1e08; color: #fcd34d; }
 </style>
 
-{{- $sectionMap := dict "stock" "个股研究" "thoughts" "投资随想" "industry" "行业分析" "macro" "宏观观察" -}}
 {{- $pages := (where .Site.RegularPages "Section" "in" (slice "stock" "thoughts" "industry" "macro")).ByDate.Reverse -}}
 {{- $groups := $pages.GroupByDate "2006年1月2日" -}}
 
@@ -67,18 +145,17 @@
   <div class="date-group">
     <div class="date-header">{{ .Key }}</div>
     {{- range $i, $page := .Pages -}}
-    <div class="article-item" data-section="{{ $page.Section }}">
+    <div class="article-item section-{{ $page.Section }}" data-section="{{ $page.Section }}">
       <span class="article-num">{{ printf "%02d" (add $i 1) }}</span>
       <div class="article-body">
         <a class="article-title" href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+        {{- with $page.Params.tags -}}
         <div class="article-tags">
-          {{- with index $sectionMap $page.Section -}}
-          <span class="tag-badge">{{ . }}</span>
-          {{- end -}}
-          {{- range $page.Params.tags -}}
+          {{- range . -}}
           <span class="tag-badge">{{ . }}</span>
           {{- end -}}
         </div>
+        {{- end -}}
       </div>
     </div>
     {{- end -}}
@@ -104,7 +181,9 @@
       });
       groups.forEach(function(group) {
         var vis = false;
-        group.querySelectorAll('.article-item').forEach(function(i) { if (i.style.display !== 'none') vis = true; });
+        group.querySelectorAll('.article-item').forEach(function(i) {
+          if (i.style.display !== 'none') vis = true;
+        });
         group.style.display = vis ? '' : 'none';
       });
     });
