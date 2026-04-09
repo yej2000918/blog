@@ -49,7 +49,7 @@
 </style>
 
 {{- $sectionMap := dict "stock" "个股研究" "thoughts" "投资随想" "industry" "行业分析" "macro" "宏观观察" -}}
-{{- $pages := .Site.RegularPages.ByDate.Reverse -}}
+{{- $pages := (where .Site.RegularPages "Section" "in" (slice "stock" "thoughts" "industry" "macro")).ByDate.Reverse -}}
 {{- $groups := $pages.GroupByDate "2006年1月2日" -}}
 
 <div class="home-wrap">
