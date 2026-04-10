@@ -7,7 +7,7 @@ tags:
   - 地缘政治
 description: 从美伊战争爆发到停火落地，六周内 WTI 原油完成了从 $75 到 $141 再回落至 $98 的完整周期。本文系统梳理本轮油价冲击的结构与逻辑，并以 USO ETF 为载体，构建地缘驱动下的石油行业博弈框架。
 draft: false
-path: content/industry
+blog_path: content/industry
 share: "true"
 ---
 
